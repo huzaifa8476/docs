@@ -25,7 +25,7 @@ Implementing this connector requires:
 - a service account impersonating the following permission scopes:
 [https://www.googleapis.com/auth/admin.directory. user](https://www.googleapis.com/auth/admin.directory.user) and [https://www.googleapis.com/auth/admin.directory.group](https://www.googleapis.com/auth/admin.directory.group).
 
-See [Google's documentation](https://developers.google.com/workspace/guides/**create**-credentials#googles-documentation) Google's documentation to **create** the service account with the right impersonation.
+See [Google's documentation](https://developers.google.com/workspace/guides/create-credentials?hl=en) Google's documentation to **create** the service account with the right impersonation.
 
 :::tip
  Remember, Google's documentation describes this procedure as optional, while the Google Workspace connector requires it. 
@@ -80,7 +80,7 @@ The identifier of the connection and thus the name of the subsection must:
 
  | Name | Details | 
  | --- | --- | 
- | CredentialsFilePath required | **Type** String **Description** Path of Google Workspace's JSON credentials file. [See Google's documentation to **create** these credentials](https://developers.google.com/workspace/guides/**create**-credentials#see-googles-documentation-to-**create**-these-credentials). | 
+ | CredentialsFilePath required | **Type** String **Description** Path of Google Workspace's JSON credentials file. [See Google's documentation to **create** these credentials](https://developers.google.com/workspace/guides/create-credentials?hl=en-to-**create**-these-credentials). | 
  | User required | **Type** String **Description** Email address of the service account mentioned in the prerequisites section. | 
  | --- | --- | 
  | --- | --- | 
