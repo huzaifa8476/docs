@@ -283,6 +283,20 @@ export const PRODUCTS = [
     icon: '',
     versions: [
       {
+        version: 'current',
+        label: 'Current',
+        isLatest: true,
+        sidebarFile: './sidebars/identitymanager/current.js',
+        customRoutePath: 'docs/identitymanager/current',
+        customDocPath: 'docs/identitymanager/current',
+      },
+      {
+        version: '6.3',
+        label: '6.3',
+        isLatest: false,
+        sidebarFile: './sidebars/identitymanager/6.3.js',
+      },
+      {
         version: '6.2',
         label: '6.2',
         isLatest: false,
@@ -293,14 +307,6 @@ export const PRODUCTS = [
         label: '6.1',
         isLatest: false,
         sidebarFile: './sidebars/identitymanager/6.1.js',
-      },
-      {
-        version: 'current',
-        label: '6.3',
-        isLatest: true,
-        sidebarFile: './sidebars/identitymanager/current.js',
-        customRoutePath: 'docs/identitymanager/current',
-        customDocPath: 'docs/identitymanager/current',
       },
     ],
     defaultVersion: 'current',
@@ -339,12 +345,14 @@ export const PRODUCTS = [
         version: '11.0',
         label: '11.0',
         isLatest: false,
+        hidden: true,
         sidebarFile: './sidebars/passwordpolicyenforcer/11.0.js',
       },
       {
         version: '10.2',
         label: '10.2',
         isLatest: false,
+        hidden: true,
         sidebarFile: './sidebars/passwordpolicyenforcer/10.2.js',
       },
     ],
@@ -368,6 +376,7 @@ export const PRODUCTS = [
         version: '3.23',
         label: '3.23',
         isLatest: false,
+        hidden: true,
         sidebarFile: './sidebars/passwordreset/3.23.js',
       },
     ],
@@ -883,9 +892,10 @@ export function generateProductCategories() {
         link: defaultLink,
       };
 
-      // Add versions if product has multiple versions
-      if (product.versions.length > 1) {
-        productInfo.versions = product.versions.map((version) => ({
+      // Add versions if product has multiple visible versions
+      const visibleVersions = product.versions.filter(v => !v.hidden);
+      if (visibleVersions.length > 1) {
+        productInfo.versions = visibleVersions.map((version) => ({
           version: version.label,
           link: version.customLink || (version.customRoutePath ? `/${version.customRoutePath}` : `/${generateRouteBasePath(product.path, version.version)}`),
           isLatest: version.isLatest,
